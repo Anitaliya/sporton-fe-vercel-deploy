@@ -5,7 +5,7 @@ import React from "react";
 type TButtonProps = {
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "dark";
+  variant?: "primary" | "dark" | "ghost";
   size?: "normal" | "small";
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
