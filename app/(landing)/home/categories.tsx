@@ -31,7 +31,7 @@ const categoryList = [
 ];
 
 const CategoriesSection = () => {
-    return <section id="category-section" className="container mx-auto pb-20">
+    return <section id="category-section" className="container mx-auto px-4 md:px-8 pb-20">
         <div 
             className="flex justify-between">
             <h2 className="font-bold text-2xl"> Browse By Categories</h2>
