@@ -1,3 +1,4 @@
+import priceFormatter from "@/app/utils/price-formatter";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,14 +55,14 @@ const ProductList = [
 
 const ProductsSection = () => {
     return (
-        <section id="products-section" className="container mx-auto mt-32">
+        <section id="products-section" className="container mx-auto mt-32 mb-52">
             <h2 className="font-bold italic text-4xl text-center mb-11">
                 <span className="text-primary">OUR </span>PRODUCTS
             </h2>
 
             <div className="grid grid-cols-4 gap-6">
                 {ProductList.map((product, index) => (
-                    <Link href="#" key={index} className="block h-full">
+                    <Link href={`/product/${product.name}`} key={index} className="block h-full">
                         <div className="flex flex-col h-full">
                             <div className="bg-primary-light h-[260px] w-full flex items-center justify-center">
                                 <Image
@@ -78,10 +79,8 @@ const ProductsSection = () => {
                             </h3>
 
                             <div className="flex justify-between text-sm text-gray-500 mt-auto">
-                                <span>{product.category}</span>
-                                <span>
-                                    Rp {product.price.toLocaleString("id-ID")}
-                                </span>
+                                <div>{product.category}</div>
+                                <div className="font-medium text-primary">{priceFormatter(product.price)}</div>
                             </div>
 
                         </div>
