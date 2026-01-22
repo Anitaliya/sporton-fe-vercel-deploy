@@ -13,8 +13,32 @@ export interface Product {
     description: string;
     imageUrl: string;
     category: Category;
-    stick: number;
+    stock: number;
     price: number;
     createdAt: string;
     updateAt: string;
+}
+
+export interface Bank {
+    _id: string;
+    bankName: string;
+    accountNumber: String;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface Transaction {
+    _id: string;
+    paymentProof: string;
+    status: "pending" | "paid" | "rejected",
+    purchasedItems: {
+        productId: string;
+        qty: number;
+    },
+    totalPayment: string;
+    customerName: string;
+    customerContact: number | null;
+    customerAddress: string;
+    createdAt: string;
+    updatedAt: string;
 }
