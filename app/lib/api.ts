@@ -18,6 +18,7 @@ export async function fetchAPI<T>(
     } catch (e) {
       console.log(e);
     }
+
     throw new Error(errorMessage);
   }
 
@@ -25,6 +26,6 @@ export async function fetchAPI<T>(
 }
 
 export function getImageUrl(path: string) {
-    if (path.startsWith("http")) return path;
-    return `${process.env.NEXT_PUBLIC_API_ROOT}/${path}` ;
+  if (path.startsWith("http")) return path;
+  return `${process.env.NEXT_PUBLIC_API_ROOT}/${path}`;
 }

@@ -11,9 +11,8 @@ export type TPageProps = {
 const ProductDetail = async ({params}: TPageProps) => {
     const {id} = await params;
 
-const product = await getProductDetail(id);
-console.log("PRODUCT:", product);
-
+    const product = await getProductDetail(id);
+    console.log("PRODUCT:", product);
 
     return (
         <main className="container mx-auto py-40 flex gap-12">

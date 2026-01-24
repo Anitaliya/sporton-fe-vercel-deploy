@@ -27,21 +27,24 @@ const Header = () => {
                     <Link href="#">Category</Link>
                     <Link href="#">Explore Products</Link>
                 </nav>
-                <button className="relative cursor-pointer" onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}>
-                    <FiSearch size={24} />
-                    <div className="relative">
+                <div className="relative">
+                    <button
+                        className="relative cursor-pointer"
+                        onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}
+                    >
+                        <FiSearch size={24} />
+                        <div className="relative">
                         <FiShoppingBag size={24} />
-                        {
-                            items.length ? (
-                                <div className="bg-primary rounded-full w-3.5 h-3.5 absolute -top-1 -right-1 text-[10px] text-white text-center">{items.length}
+                        {items.length > 0 && (
+                            <div className="bg-primary rounded-full w-3.5 h-3.5 absolute -top-1 -right-1 text-[10px] text-white text-center">
+                            {items.length}
+                            </div>
+                        )}
                         </div>
-                            ) : (
-                                <></>
-                            )
-                        }
-                    </div>
+                    </button>
+
                     {isCartPopupOpen && <CartPopup />}
-                </button>
+                    </div>
             </div>
         </header>
     );

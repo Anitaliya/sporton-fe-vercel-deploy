@@ -1,5 +1,3 @@
-"use client"
-
 import OrderSubmitted from "../../components/order-status/order-submitted"
 import OrderConfirmed from "../../components/order-status/order-confirmed"
 import { TPageProps } from "../../product/[id]/page"

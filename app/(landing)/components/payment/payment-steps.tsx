@@ -12,7 +12,7 @@ import { transactionCheckout } from "@/app/services/trasnsaction.service"
 
 const PaymentSteps = () => {
     const { push } = useRouter()
-    const { items, customerInfo, reset } = useCartStore() // <-- ambil reset dari store
+    const { items, customerInfo, reset } = useCartStore()  
     const [file, setFile] = useState<File | null>()
 
     const totalPrice = items.reduce(
@@ -27,7 +27,7 @@ const PaymentSteps = () => {
     const handleConfirmPayment = async () => {
         if (!file) {
             alert("Please upload your payment receipt!")
-            return
+            return;
         }
 
         if (!customerInfo) {
@@ -35,31 +35,25 @@ const PaymentSteps = () => {
                 "Customer information is missing, please return to checkout"
             )
             push("/checkout")
-            return
+            return;
         }
 
         try {
             const formData = new FormData()
             formData.append("customerName", customerInfo.customerName)
-            formData.append(
-                "customerContact",
-                customerInfo.customerContact!.toString()
-            )
+            formData.append("customerContact", customerInfo.customerContact!.toString())
             formData.append("customerAddress", customerInfo.customerAddress)
             formData.append("image", file)
-            formData.append(
-                "purcasedItems",
-                JSON.stringify(
-                    items.map((item) => ({ productId: item._id, qty: item.qty }))
-                )
+            formData.append("purcasedItems",JSON.stringify(
+                    items.map((item) => ({ productId: item._id, qty: item.qty })))
             )
             formData.append("totalPayment", totalPrice!.toString())
 
             const res = await transactionCheckout(formData)
 
             alert("Transaction created succesfully!")
-            reset() // <-- reset store
-            push(`/order-status/${res._id}`) // <-- perbaiki template string
+            reset()  
+            push(`/order-status/${res._id}`)  
 
         } catch (error) {
             console.log(error)
